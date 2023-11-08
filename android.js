@@ -12,7 +12,7 @@
         }
         var r = window.rpgmvMediaRecorder;
         r.combinedStream = new MediaStream();
-        r.videoStream = GameCanvas.captureStream(); // 画面不动时不录制屏幕
+        r.videoStream = GameCanvas.captureStream(25); // 25 FPS
         r.videoStream.getVideoTracks().forEach(function (track) {
           r.combinedStream.addTrack(track);
         });
