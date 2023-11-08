@@ -4,7 +4,7 @@
     if(window.rpgmvMediaRecorder){
         var r = window.rpgmvMediaRecorder;
         if(r.mediaRecorder.state === 'inactive'){
-            r.mediaRecorder.start();
+            r.mediaRecorder.start(10000);
         }
     }else{
         window.rpgmvMediaRecorder = {
@@ -37,7 +37,7 @@
         a.download = Date.now() + '.webm'
         a.click();
         };
-        r.mediaRecorder.start(); 
+        r.mediaRecorder.start(10000); 
         WebAudio.prototype.$_connectNodes = WebAudio.prototype._connectNodes;
         WebAudio.prototype._connectNodes = function () {
           this.$_connectNodes();
@@ -45,7 +45,7 @@
         };
         window.addEventListener("touchstart",function(e){
             if(r.mediaRecorder.state === 'inactive'){
-                if(e.touches.length === 5) r.mediaRecorder.start()
+                if(e.touches.length === 5) r.mediaRecorder.start(10000)
             }else if(e.touches.length === 4){
                 if(r.mediaRecorder.state === 'paused'){
                     r.mediaRecorder.resume()
