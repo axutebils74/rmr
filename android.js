@@ -4,7 +4,7 @@
     if(window.rpgmvMediaRecorder){
         var r = window.rpgmvMediaRecorder;
         if(r.mediaRecorder.state === 'inactive'){
-            r.mediaRecorder.start(1000);
+            r.mediaRecorder.start();
         }
     }else{
         window.rpgmvMediaRecorder = {
@@ -12,7 +12,7 @@
         }
         var r = window.rpgmvMediaRecorder;
         r.combinedStream = new MediaStream();
-        r.videoStream = GameCanvas.captureStream(30); // 30 FPS
+        r.videoStream = GameCanvas.captureStream(25); // 25 FPS
         r.videoStream.getVideoTracks().forEach(function (track) {
           r.combinedStream.addTrack(track);
         });
@@ -37,7 +37,7 @@
         a.download = Date.now() + '.webm'
         a.click();
         };
-        r.mediaRecorder.start(1000); // 每隔1s添加一次chunk
+        r.mediaRecorder.start(); 
         WebAudio.prototype.$_connectNodes = WebAudio.prototype._connectNodes;
         WebAudio.prototype._connectNodes = function () {
           this.$_connectNodes();
@@ -45,7 +45,7 @@
         };
         window.addEventListener("touchstart",function(e){
             if(r.mediaRecorder.state === 'inactive'){
-                if(e.touches.length === 5) r.mediaRecorder.start(1000)
+                if(e.touches.length === 5) r.mediaRecorder.start()
             }else if(e.touches.length === 4){
                 if(r.mediaRecorder.state === 'paused'){
                     r.mediaRecorder.resume()
