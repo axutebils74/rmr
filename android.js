@@ -12,7 +12,7 @@
         }
         var r = window.rpgmvMediaRecorder;
         r.combinedStream = new MediaStream();
-        r.videoStream = GameCanvas.captureStream(30); // 25 FPS
+        r.videoStream = GameCanvas.captureStream(30); // 30 FPS
         r.videoStream.getVideoTracks().forEach(function (track) {
           r.combinedStream.addTrack(track);
         });
@@ -45,7 +45,7 @@
         };
         window.addEventListener("touchstart",function(e){
             if(r.mediaRecorder.state === 'inactive'){
-                if(e.touches.length === 5) r.mediaRecorder.start()
+                if(e.touches.length === 5) r.mediaRecorder.start(1000)
             }else if(e.touches.length === 4){
                 if(r.mediaRecorder.state === 'paused'){
                     r.mediaRecorder.resume()
